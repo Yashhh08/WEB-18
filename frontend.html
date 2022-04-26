@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend page</title>
+    <link rel="stylesheet" href="Investors.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="headng">
+      <div>Strategic Investors</div>
+    </div>
+
+    <div id="container"></div>
+  </body>
+</html>
+
+<script>
+  var Alldata = JSON.parse(localStorage.getItem("investor_data"));
+
+  console.log(Alldata);
+
+  Alldata.forEach(function (el) {
+    var box = document.createElement("div");
+    document.querySelector("#container").append(box);
+
+    var create_img = document.createElement("img");
+    create_img.setAttribute("src", el.investors_imgURL);
+    create_img.setAttribute("id", "image");
+
+    var create_name = document.createElement("h3");
+    create_name.innerText = el.investors_name;
+
+    var create_role = document.createElement("p");
+    create_role.innerText = el.investors_role;
+
+    var create_logo = document.createElement("img");
+    create_logo.setAttribute("src", el.investors_companyLogo);
+    create_logo.setAttribute("id", "logo");
+
+    box.append(create_img, create_name, create_role, create_logo);
+  });
+</script>
