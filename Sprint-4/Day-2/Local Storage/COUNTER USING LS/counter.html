@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+
+  <body>
+    <h1 id="display"></h1>
+
+    <div id="buttons">
+      <button id="inc">Increment</button>
+      <button id="dec">decrement</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  var display = document.querySelector("#display");
+
+  var count = localStorage.getItem("count") || 0;
+
+  display.innerText = count;
+
+  document.querySelector("#inc").addEventListener("click", function_inc);
+
+  function function_inc() {
+    count++;
+    display.innerText = count;
+
+    localStorage.setItem("count", count);
+  }
+
+  document.querySelector("#dec").addEventListener("click", function_dec);
+
+  function function_dec() {
+    count--;
+    display.innerText = count;
+
+    localStorage.setItem("count", count);
+  }
+</script>
