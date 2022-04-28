@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="form">
+      <h1>Sign Up</h1>
+
+      <form id="signup_form">
+        <input id="name" type="text" placeholder="Full Name" />
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+
+        <div><input id="submit" type="submit" value="SIGN UP" /></div>
+      </form>
+
+      <div id="option">
+        <div>Already have an account?</div>
+        <a href="login.html">Log In</a>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  var data = JSON.parse(localStorage.getItem("All_data")) || [];
+
+  document.querySelector("form").addEventListener("submit", function_submit);
+
+  function function_submit() {
+    event.preventDefault();
+
+    var user_name = signup_form.name.value;
+
+    var user_email = signup_form.email.value;
+
+    var user_password = signup_form.password.value;
+
+    /*console.log(user_name,user_email,user_password)*/
+
+    var data_obj = {
+      Name_: user_name,
+      Email_: user_email,
+      Password_: user_password,
+    };
+
+    if (user_name != "" && user_email != "" && user_password != "") {
+      data.push(data_obj);
+    }
+
+    /*console.log(data)*/
+
+    localStorage.setItem("All_data", JSON.stringify(data));
+
+    if (user_name != "" && user_email != "" && user_password != "") {
+      alert("Sign Up Successful");
+      window.location.href = "login.html";
+    } else {
+      alert("Please Enter Valid Information");
+    }
+  }
+</script>

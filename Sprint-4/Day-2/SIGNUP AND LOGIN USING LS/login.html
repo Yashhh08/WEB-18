@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Log In</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div id="form">
+      <h1>Log In</h1>
+      <form id="login_form">
+        <input id="email" type="email" placeholder="Email" />
+        <input id="password" type="password" placeholder="Password" />
+
+        <div><input id="submit" type="submit" value="LOG IN" /></div>
+      </form>
+
+      <div id="option">
+        <span>Don't have an account?</span>
+        <a href="Signup.html">Sign Up</a>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  var correct = 0;
+
+  var data = JSON.parse(localStorage.getItem("All_data"));
+
+  document
+    .querySelector("#login_form")
+    .addEventListener("submit", function_login);
+
+  function function_login() {
+    event.preventDefault();
+
+    var user_email = login_form.email.value;
+
+    var user_password = login_form.password.value;
+
+    console.log(user_email, user_password);
+
+    data.forEach(function (el) {
+      if (el.Email_ == user_email && el.Password_ == user_password) {
+        correct++;
+      }
+    });
+
+    if (correct > 0) {
+      alert("Login Successful");
+    } else {
+      alert("Something went wrong! Incorrect Email or Password");
+    }
+
+    window.location.reload();
+  }
+</script>
